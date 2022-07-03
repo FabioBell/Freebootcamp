@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220702231656) do
+ActiveRecord::Schema.define(version: 20220703162608) do
 
   create_table "_delete", force: true do |t|
     t.datetime "created_at"
@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20220702231656) do
     t.string   "twitter"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "friends", ["user_id"], name: "index_friends_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
